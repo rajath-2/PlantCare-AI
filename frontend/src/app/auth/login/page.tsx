@@ -75,6 +75,15 @@ export default function LoginPage() {
       return;
     }
 
+    // Check against mock credentials first
+    if (phone === mockCredentials.number && password === mockCredentials.password) {
+      localStorage.setItem('plantcare_authenticated', 'true');
+      localStorage.removeItem('token'); // Clear any existing token
+      alert('Login successful with demo credentials!');
+      router.push('/dashboard');
+      return;
+    }
+
     try {
       const res = await fetch(`${BASE_URL}/login`, {
         method: 'POST',
@@ -110,23 +119,10 @@ export default function LoginPage() {
     e.preventDefault();
     setError('');
 
-    // Mocked auth using original demo creds for convenience
-    if (activeTab === 'signin') {
-      if ((phone === '+91 9999999999' || phone === mockCredentials.number) && password === mockCredentials.password) {
-        localStorage.setItem('plantcare_authenticated', 'true');
-        localStorage.removeItem('token'); // Clear any existing token
-        window.location.href = '/dashboard';
-      } else {
-        setError('Invalid credentials. Try: +91 9999999999 / demo123');
-      }
+    if (activeTab === 'signup') {
+      handleSignup();
     } else {
-      if (name && phone && password) {
-        localStorage.setItem('plantcare_authenticated', 'true');
-        localStorage.removeItem('token'); // Clear any existing token
-        window.location.href = '/dashboard';
-      } else {
-        setError('Please fill in all fields');
-      }
+      handleLogin();
     }
   };
 

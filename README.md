@@ -77,6 +77,8 @@ Follow these instructions to get a copy of the project up and running on your lo
 
     The frontend will be available at [http://localhost:3000](http://localhost:3000).
 
+    **Note:** You can log in with demo credentials: **Phone: 1234567890**, **Password: 12345678**.
+
 2.  **Start the backend server:**
 
     From the `Backend` directory, run:
