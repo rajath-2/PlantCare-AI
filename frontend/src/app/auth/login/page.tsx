@@ -25,7 +25,7 @@ export default function LoginPage() {
 // const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 // const [error, setError] = useState('');
 
-  const BASE_URL = "http://localhost:8000/transcript";  // Change if needed
+  const BASE_URL = "http://127.0.0.1:8000/transcript";  // Change if needed
   const handleSignup = async () => {
     setError('');
 

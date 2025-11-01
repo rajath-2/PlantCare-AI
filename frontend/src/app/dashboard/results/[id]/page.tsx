@@ -43,7 +43,7 @@ export default function ResultsPage() {
         const plantId = params.id;
         
         // Fetch specific plant details
-        const response = await fetch(`http://localhost:8000/transcript/plant/${mobile}/${plantId}`, {
+        const response = await fetch(`http://127.0.0.1:8000/transcript/plant/${mobile}/${plantId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ export default function ResultsPage() {
           confidence: data.confidence || 0,
           severity: data.severity || 'Unknown',
           // Fix image URL to be web-accessible
-          imageUrl: data.imageUrl ? `http://localhost:8000/uploads/${data.imageUrl.split('/').pop()}` : 'https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=400&h=300&fit=crop',
+          imageUrl: data.imageUrl ? `http://127.0.0.1:8000/uploads/${data.imageUrl.split('/').pop()}` : 'https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=400&h=300&fit=crop',
           detectedAt: data.detectedAt || new Date().toISOString(),
           status: data.confidence >= 80 ? 'healthy' : 'needs-attention',
           treatment: {
